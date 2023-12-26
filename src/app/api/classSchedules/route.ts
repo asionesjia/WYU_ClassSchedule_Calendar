@@ -6,6 +6,7 @@ import {jsonClassScheduleToCourseObj} from "@/app/utils/jsonClassScheduleToCours
 import {tableToJson} from "@/app/utils/tableElementToJson";
 import jsdom from "jsdom";
 import {ClassScheduleMetadata} from "@/app/page";
+import {mongodb} from "@/app/utils/mongodb";
 
 const { JSDOM } = jsdom;
 
@@ -18,10 +19,11 @@ function isUUID(str: string) {
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
     const uuid = searchParams.get('uuid')
+    const db = await mongodb()
     if(uuid && isUUID(uuid)) {
-        const dbClassScheduleMetadata = await getDataByUuid(uuid) as ClassScheduleMetadata[]
+        const dbClassScheduleMetadata = await db.findOne({uuid: uuid}) as ClassScheduleMetadata
         if(dbClassScheduleMetadata) {
-            const classScheduleMetadata = dbClassScheduleMetadata[0]
+            const classScheduleMetadata = dbClassScheduleMetadata
             const courses = () => {
                 const { window } = new JSDOM();
                 const document = window.document;
@@ -65,7 +67,7 @@ export async function GET(req: Request) {
             return NextResponse.json({ err: {error: '非法请求！'} }, { status: 500 });
         }
         try {
-            const rows = await dbAllAsync('SELECT * FROM class_schedules');
+            const rows = await db.find({}).toArray() as ClassScheduleMetadata[];
             return NextResponse.json({ data: rows }, { status: 200 });
         } catch (err) {
             return NextResponse.json({ data: err }, { status: 200 });
@@ -79,14 +81,13 @@ export async function POST(req: NextRequest) {
     const uuid = uuidv4();
 
     try {
-        await dbRunAsync('INSERT INTO class_schedules (uuid, name, createAt, description, stringTable) VALUES (?, ?, ?, ?, ?)', [
-            uuid,
-            name,
-            createAt.toISOString(),
-            description,
-            stringTable,
-        ]);
-
+        const db = await mongodb()
+        await db.insertOne({
+            uuid: uuid,
+            name: name,
+            description: description,
+            createAt: createAt
+        })
         return NextResponse.json({ data: { name, description, uuid, stringTable, createAt } }, { status: 200 });
     } catch (err: any) {
         console.error('处理错误:', err);
