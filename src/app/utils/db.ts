@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
 import {promisify} from "util";
 
-const db = new sqlite3.Database('/database/database.db');
+const db = new sqlite3.Database('database/database.db');
 const dbAllAsync = promisify(db.all.bind(db))
 const dbRunAsync  = (sql: string, params: any[]) => {
     return new Promise((resolve, reject) => {
