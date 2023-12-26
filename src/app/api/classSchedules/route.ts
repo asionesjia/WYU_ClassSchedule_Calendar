@@ -87,6 +87,7 @@ export async function POST(req: NextRequest) {
             uuid: uuid,
             name: name,
             description: description,
+            stringTable: stringTable,
             createAt: createAt
         })
         return NextResponse.json({ data: { name, description, uuid, stringTable, createAt } }, { status: 200 });
