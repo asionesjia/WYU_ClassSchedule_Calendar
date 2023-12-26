@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --table-theme-color: #e74c3c; /* 红色 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +25,45 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+table {
+  @apply w-full border-collapse mt-6;
+}
+
+th {
+  @apply bg-red-500 dark:bg-red-900 text-white p-2 text-center;
+}
+
+tr:nth-child(odd) {
+  @apply bg-red-50 dark:bg-red-900/10;
+}
+
+tr:nth-child(even) {
+  @apply bg-white dark:bg-neutral-900;
+}
+
+th {
+  @apply border border-gray-400 dark:border-gray-700 border-t-0
+}
+
+td {
+  @apply p-2 border border-gray-400 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600
+}
+
+tbody > tr > td,th:first-child {
+ @apply border-l-0
+}
+
+tbody > tr > td:last-child {
+ @apply border-r-0
+}
+
+tbody > tr > th:last-child {
+  @apply border-r-0
+}
+
+
+tbody > tr:last-child > td {
+  @apply border-b-0
 }
