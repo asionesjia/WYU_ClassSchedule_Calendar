@@ -9,6 +9,9 @@ import jsdom from "jsdom";
 
 const { JSDOM } = jsdom;
 
+const path = require('path');
+const icsPath = path.resolve('public/ics');
+
 export async function GET() {
     try {
         const rows = await dbAllAsync('SELECT * FROM class_schedules');
@@ -52,7 +55,7 @@ export async function POST(req: NextRequest) {
         courses()
     )
 
-    const filePath = `public/ics/${uuid}.ics`;
+    const filePath = `${icsPath}/${uuid}.ics`;
     function normalizeLineEndings(str: string, desiredLineEnding: any) {
         // Replace all occurrences of existing line endings with the desired one
         return str.replace(/\r\n|\r|\n/g, desiredLineEnding);
