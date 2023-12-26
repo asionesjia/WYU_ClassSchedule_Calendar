@@ -45,7 +45,7 @@ const SelectClassSchedule: React.FC<SelectClassScheduleProps> = ({setClassSchedu
             </div>
             <div className="">
                 <Combobox value={selected} onChange={setSelected} >
-                    <div className="relative mt-1 z-50">
+                    <div className="relative mt-1 z-40">
                         <div className="relative w-full cursor-default overflow-hidden rounded-lg text-left shadow-xl focus:outline-none sm:text-sm">
                             <Combobox.Input
                                 className="w-full border-none py-2 pl-3 pr-10 text-sm leading-7 text-gray-900 caret-red-600 font-bold focus:ring-0 ring-0 ring-offset-0 border-0 outline-none bg-gray-100 dark:bg-gray-500/60 dark:text-gray-200"

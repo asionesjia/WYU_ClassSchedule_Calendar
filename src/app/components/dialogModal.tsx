@@ -24,7 +24,7 @@ export const DialogModal: React.FC<DialogModalProps> = ({cancelCallback, confirm
 
     return (
         <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" className="absolute z-10 w-full h-screen" onClose={closeModal}>
+            <Dialog as="div" className="absolute z-50 w-full h-screen" onClose={closeModal}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
