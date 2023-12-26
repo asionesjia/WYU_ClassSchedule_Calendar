@@ -15,7 +15,7 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
 
     const handleCopy = async (pre: string) => {
         try {
-            await navigator.clipboard.writeText(`${pre}://${host}/ics/${classScheduleMetadata?.uuid}.ics`);
+            await navigator.clipboard.writeText(`${pre}://${host}/api/classSchedules?uuid=${classScheduleMetadata?.uuid}`);
             toast('订阅URL已经复制到剪切板。', {
                 type: "success"
             })
@@ -46,10 +46,10 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
                                 className={'w-full h-18 p-4 rounded-2xl bg-red-100 flex justify-between space-x-3 dark:bg-red-900'}>
                                 <div className={'bg-red-500 rounded-2xl flex items-center px-4 flex-1'}>
                                     <input type="text" className={'w-full outline-0 border-0 bg-red-500 text-white p-0 m-0 ring-0'}
-                                           value={`http://${host}/ics/${classScheduleMetadata.uuid}.ics`} readOnly={true}/>
+                                           value={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} readOnly={true}/>
                                 </div>
                                 <div className={'flex space-x-3'}>
-                                    <Link href={`webcal://${host}/ics/${classScheduleMetadata.uuid}.ics`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
+                                    <Link href={`webcal://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
                                         <FaApple
                                             className={'w-full h-full text-white'}/></Link>
                                     <div onClick={() => handleCopy('http')} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
@@ -68,10 +68,10 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
                                 className={'w-full p-4 rounded-2xl bg-red-100 flex justify-between space-x-3 dark:bg-red-900'}>
                                 <div className={'bg-red-500 rounded-2xl flex items-center px-4 flex-1'}>
                                     <input type="text" className={'w-full outline-0 border-0 bg-red-500 text-white p-0 m-0 ring-0'}
-                                           value={`http://${host}/ics/${classScheduleMetadata.uuid}.ics`} readOnly={true}/>
+                                           value={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} readOnly={true}/>
                                 </div>
                                 <div className={'flex space-x-3'}>
-                                    <Link href={`http://${host}/ics/${classScheduleMetadata.uuid}.ics`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700'}>
+                                    <Link href={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700'}>
                                         <HiDocumentDownload className={'w-full h-full text-white'}/></Link>
                                 </div>
                             </div>
