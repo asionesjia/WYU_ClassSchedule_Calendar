@@ -1,6 +1,8 @@
 var sqlite3 = require('sqlite3');
+const path = require('path');
+const dbPath = path.resolve('public/database/database.db');
 console.log('正在初始化数据库...')
-let db= new sqlite3.Database('public/database/database.db', sqlite3.OPEN_READWRITE, (err) => {
+let db= new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.log('正在创建数据库...')
         createDatabase();
@@ -13,7 +15,7 @@ let db= new sqlite3.Database('public/database/database.db', sqlite3.OPEN_READWRI
 });
 
 function createDatabase() {
-    let newdb = new sqlite3.Database('public/database/database.db', (err) => {
+    let newdb = new sqlite3.Database(dbPath, (err) => {
         if (err) {
             console.log(err.message);
             exit(1);
