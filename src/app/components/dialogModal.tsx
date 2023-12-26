@@ -55,7 +55,7 @@ export const DialogModal: React.FC<DialogModalProps> = ({cancelCallback, confirm
                                 >
                                     预览课程表
                                 </Dialog.Title>
-                                <div className="mt-2 h-64 touch-auto md:h-full overflow-auto">
+                                <div className="mt-2 h-72 touch-auto md:h-full overflow-auto">
                                     {children}
                                 </div>
 

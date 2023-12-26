@@ -168,21 +168,21 @@ const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> 
                         <p className={'text-gray-400'}>因为您是该课程表的上传者，请您为它进行命名和描述。</p>
                         <div className={'w-full pt-6 space-y-6 text-gray-400'}>
                             <div>
-                                <p className={'text-black'}>课程表名称：</p>
+                                <p className={'font-bold text-black dark:text-gray-200'}>课程表名称：</p>
                                 <p className={'pb-2'}>建议命名规范：学期 + 学院 + 年级 + 专业 + 班级</p>
                                 <input
                                     type="text"
-                                    className="w-2/3 border-2 focus:border-red-600 px-4 py-2 rounded-md outline-none focus:outline-none"
+                                    className="w-full md:w-2/3 border-2 focus:border-red-600 px-4 py-2 rounded-md outline-none focus:outline-none"
                                     placeholder="如:大三下生21环生"
                                     value={inputNameValue}
                                     onChange={handleInputNameChange}
                                 />
                             </div>
                             <div>
-                                <p className={'text-black'}>课程表描述：</p>
+                                <p className={'font-bold text-black dark:text-gray-200'}>课程表描述：</p>
                                 <input
                                     type="text"
-                                    className="w-2/3 border-2 focus:border-red-600 px-4 py-2 rounded-md outline-none focus:outline-none"
+                                    className="w-full md:w-2/3 border-2 focus:border-red-600 px-4 py-2 rounded-md outline-none focus:outline-none"
                                     placeholder="如：春风又绿江南岸，安安安。"
                                     value={inputDescriptionValue}
                                     onChange={handleInputDescriptionChange}
