@@ -10,7 +10,7 @@ import jsdom from "jsdom";
 const { JSDOM } = jsdom;
 
 const path = require('path');
-const icsPath = path.resolve('public/ics');
+const icsPath = path.resolve('public/ics/');
 
 export async function GET() {
     try {

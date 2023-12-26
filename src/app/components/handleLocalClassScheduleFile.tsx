@@ -173,7 +173,7 @@ const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> 
                                 <input
                                     type="text"
                                     className="w-2/3 border-2 focus:border-red-600 px-4 py-2 rounded-md outline-none focus:outline-none"
-                                    placeholder="如:23年下生21环生"
+                                    placeholder="如:大三下生21环生"
                                     value={inputNameValue}
                                     onChange={handleInputNameChange}
                                 />
