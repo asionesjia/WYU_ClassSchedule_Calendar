@@ -1,5 +1,4 @@
 import {v4 as uuidv4} from 'uuid';
-import {dbAllAsync, dbRunAsync, getDataByUuid} from '@/app/utils/db';
 import {NextRequest, NextResponse} from "next/server";
 import {School} from "@/app/utils/classScheduleHandle";
 import {jsonClassScheduleToCourseObj} from "@/app/utils/jsonClassScheduleToCourseObj";
