@@ -67,7 +67,8 @@ export async function GET(req: Request) {
             return NextResponse.json({ err: {error: '非法请求！'} }, { status: 500 });
         }
         try {
-            const rows = await db.find({}).toArray() as ClassScheduleMetadata[];
+            const rows = await db.find({}).toArray();
+            console.log(rows)
             return NextResponse.json({ data: rows }, { status: 200 });
         } catch (err) {
             return NextResponse.json({ data: err }, { status: 200 });
