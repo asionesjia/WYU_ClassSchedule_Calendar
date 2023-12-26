@@ -1,22 +1,17 @@
 
-import React, {ChangeEvent, Dispatch, Fragment, SetStateAction, useEffect, useState} from 'react';
+import React, {ChangeEvent, Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {stringHtmlToDocumentObj} from "@/app/utils/stringHtmlToDocumentObj";
-import {tableToJson} from "@/app/utils/tableElementToJson";
 import {ClassScheduleMetadata} from "@/app/page";
-import {Course} from "@/app/utils/classScheduleHandle";
 import {DialogModal} from "@/app/components/dialogModal";
-import {ClassScheduleTable} from "@/app/components/classScheduleTable";
 import {toast} from "react-toastify";
-import {allowedDisplayValues} from "next/dist/compiled/@next/font/dist/constants";
 
 
 
 interface HandleLocalClassScheduleFileProps {
-    classScheduleMetadata: ClassScheduleMetadata | undefined;
     setClassScheduleMetadata: Dispatch<SetStateAction<ClassScheduleMetadata | undefined>>;
 }
 
-const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> = ({classScheduleMetadata, setClassScheduleMetadata}) => {
+const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> = ({setClassScheduleMetadata}) => {
     const [isDragging, setIsDragging] = useState(false);
     const [uploadFileName, setUploadFileName] = useState<string>('');
     const [uploadFileStringHtml, setUploadFileStringHtml] = useState<string>('');
@@ -39,7 +34,6 @@ const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> 
 
     useEffect(() => {
         if(isUploadConfirmed && uploadFileDocument) {
-            const classScheduleName = uploadFileDocument?.getElementsByTagName('strong')[0].outerText.split(' ')[0]
             const classScheduleTable = uploadFileDocument?.getElementById('kbtable0') as HTMLTableElement
             if(classScheduleTable) {
                 const toastUpload = toast('正在上传中...', {
@@ -59,7 +53,7 @@ const HandleLocalClassScheduleFile: React.FC<HandleLocalClassScheduleFileProps> 
                     }),
                 }).then((res) => res.json())
 
-                const uploadRes = upload
+                upload
                     .then((data) => {
                         if(data?.error){
                             cancelPreviewModal()

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {FaApple} from "react-icons/fa6";
 import {HiClipboardCopy, HiDocumentDownload} from "react-icons/hi";
 import {ClassScheduleMetadata} from "@/app/page";

@@ -96,7 +96,7 @@ export default function Home() {
                                 'rounded-xl p-3',
                                 'focus:outline-none'
                             )}>
-                                <HandleLocalClassScheduleFlie setClassScheduleMetadata={setClassScheduleMetadata} classScheduleMetadata={classScheduleMetadata}/>
+                                <HandleLocalClassScheduleFlie setClassScheduleMetadata={setClassScheduleMetadata} />
                             </Tab.Panel>
                             <Tab.Panel className={classNames(
                                 'rounded-xl p-3',

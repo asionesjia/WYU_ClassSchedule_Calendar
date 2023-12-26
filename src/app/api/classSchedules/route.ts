@@ -1,5 +1,5 @@
 import {v4 as uuidv4} from 'uuid';
-import db, {dbAllAsync, dbRunAsync} from '@/app/utils/db';
+import {dbAllAsync, dbRunAsync} from '@/app/utils/db';
 import {NextRequest, NextResponse} from "next/server";
 import {School} from "@/app/utils/classScheduleHandle";
 import * as fs from "fs";
@@ -9,14 +9,7 @@ import jsdom from "jsdom";
 
 const { JSDOM } = jsdom;
 
-interface ClassSchedule {
-    uuid: string;
-    name: string;
-    createAt: Date;
-    description: string;
-}
-
-export async function GET(request: Request) {
+export async function GET() {
     try {
         const rows = await dbAllAsync('SELECT * FROM class_schedules');
         return NextResponse.json({ data: rows }, { status: 200 });
@@ -65,7 +58,7 @@ export async function POST(req: NextRequest) {
         return str.replace(/\r\n|\r|\n/g, desiredLineEnding);
     }
     const checkFileExistence = (filePath: fs.PathLike) => {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             fs.access(filePath, fs.constants.F_OK, (err) => {
                 if (err) {
                     // 文件不存在
@@ -93,7 +86,7 @@ export async function POST(req: NextRequest) {
         } else {
             // 文件已存在，抛出错误
             console.error('文件已经存在，请不要非法操作。');
-            throw Error('文件已经存在，请不要非法操作。');
+            throw new Error('文件已经存在，请不要非法操作。');
         }
 
         // 其他操作，例如数据库插入等
