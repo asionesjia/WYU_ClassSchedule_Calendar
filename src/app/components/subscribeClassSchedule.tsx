@@ -28,7 +28,8 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
         const userAgent = window.navigator.userAgent.toLowerCase();
         if(userAgent.includes('micromessenger')) {
             toast('由于微信限制，微信内无法一键订阅，请点击右上角三个点用默认浏览器打开、或复制链接到Safari浏览器打开。', {
-                type: 'warning'
+                type: 'error',
+                autoClose: false
             })
         }
     }
