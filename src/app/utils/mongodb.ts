@@ -4,7 +4,7 @@ let cachedClient: MongoClient | null = null;
 
 export async function connectToDatabase(): Promise<Db> {
     if (cachedClient) {
-        return cachedClient.db();
+        return cachedClient.db('wyuCalendar');
     }
 
     const client = await MongoClient.connect(process.env.MONGODB_URL || '');
