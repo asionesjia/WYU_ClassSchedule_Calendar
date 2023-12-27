@@ -67,7 +67,6 @@ export async function GET(req: Request) {
         }
         try {
             const rows = await db.find({}).toArray();
-            console.log(rows)
             return NextResponse.json({ data: rows }, { status: 200 });
         } catch (err) {
             return NextResponse.json({ data: err }, { status: 200 });

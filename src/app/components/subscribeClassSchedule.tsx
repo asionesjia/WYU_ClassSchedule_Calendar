@@ -49,7 +49,7 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
                                            value={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} readOnly={true}/>
                                 </div>
                                 <div className={'flex space-x-3'}>
-                                    <Link href={`webcal://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
+                                    <Link href={`webcal://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
                                         <FaApple
                                             className={'w-full h-full text-white'}/></Link>
                                     <div onClick={() => handleCopy('http')} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700 cursor-pointer'}>
@@ -71,7 +71,7 @@ const SubscribeClassSchedule:React.FC<SubscribeClassScheduleProps> = ({classSche
                                            value={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} readOnly={true}/>
                                 </div>
                                 <div className={'flex space-x-3'}>
-                                    <Link href={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700'}>
+                                    <Link href={`http://${host}/api/classSchedules?uuid=${classScheduleMetadata.uuid}`} target={'_blank'} className={'w-12 h-12 bg-red-500 rounded-2xl p-3 flex items-center justify-center hover:bg-red-700'}>
                                         <HiDocumentDownload className={'w-full h-full text-white'}/></Link>
                                 </div>
                             </div>
