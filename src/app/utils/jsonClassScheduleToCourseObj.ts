@@ -3,7 +3,6 @@ import {Course} from "@/app/utils/classScheduleHandle";
 import {wyu} from "@/app/utils/classScheduleInit";
 
 export const jsonClassScheduleToCourseObj = (tableData: TableData) => {
-    console.log(tableData)
     const course: Course[] = []
     for(let r = 0; r < tableData.rows.length; r++) {
         const row = tableData.rows[r]
@@ -84,6 +83,5 @@ export const jsonClassScheduleToCourseObj = (tableData: TableData) => {
             }
         }
     }
-    console.log(course)
     return course
 }

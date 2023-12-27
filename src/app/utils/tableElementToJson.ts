@@ -31,7 +31,6 @@ export const tableToJson = (tableElement: HTMLTableElement): TableData => {
                 cellArrayContent.push(htmlContent)
             }
             tableRow.cells.push({content: cellArrayContent})
-            console.log(cellContent)
         }
 
         // 将行添加到表格数据中

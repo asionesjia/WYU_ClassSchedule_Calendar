@@ -18,6 +18,10 @@ function isUUID(str: string) {
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url)
     const uuid = searchParams.get('uuid')
+    if(uuid && !isUUID(uuid)) {
+        return NextResponse.json({ err: {error: '非法请求！'} }, { status: 500 });
+    }
+
     const db = await mongodb()
     if(uuid && isUUID(uuid)) {
         const dbClassScheduleMetadata = await db.findOne({uuid: uuid}) as ClassScheduleMetadata
@@ -60,13 +64,12 @@ export async function GET(req: Request) {
                     'Content-Disposition': `attachment; filename="${classScheduleMetadata.name}.ics"`
                 }
             })
+        } else {
+            return NextResponse.json({msg: '暂未查询到数据，请稍后再试。'}, { status: 200 })
         }
     } else {
-        if(uuid && !isUUID(uuid)) {
-            return NextResponse.json({ err: {error: '非法请求！'} }, { status: 500 });
-        }
         try {
-            const rows = await db.find({}).toArray();
+            const rows = await db.find({}).toArray() as ClassScheduleMetadata[];
             return NextResponse.json({ data: rows }, { status: 200 });
         } catch (err) {
             return NextResponse.json({ data: err }, { status: 200 });
