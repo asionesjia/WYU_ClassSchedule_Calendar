@@ -61,7 +61,7 @@ export async function GET(req: Request) {
             return new Response(normalizeLineEndings(school.generate().replace(/[^\S\n]+/g, ''), '\r\n'), {
                 headers: {
                     'Content-Type': 'text/calendar',
-                    'Content-Disposition': `attachment; filename="${classScheduleMetadata.name}.ics"`
+                    'Content-Disposition': `attachment; filename="${classScheduleMetadata.uuid}.ics"`
                 }
             })
         } else {
