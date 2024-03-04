@@ -51,7 +51,7 @@ export async function GET(req: Request) {
                     [21, 0],
                     [21, 55]
                 ],
-                [2023,9,4],
+                [2024,2,26],
                 courses()
             )
             const normalizeLineEndings = (str: string, desiredLineEnding: any) => {
